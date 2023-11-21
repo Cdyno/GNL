@@ -6,7 +6,7 @@
 /*   By: olmohame <olmohame@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:15:29 by olmohame          #+#    #+#             */
-/*   Updated: 2023/11/21 05:54:14 by olmohame         ###   ########.fr       */
+/*   Updated: 2023/11/21 08:30:43 by olmohame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static char	*extr_line(char **board, int nbr)
 	char	cond;
 	char	*line;
 	char	*tmp;
-	size_t		line_len;
+	size_t	line_len;
 
 	cond = '\n';
 	if (!nbr)
@@ -76,7 +76,7 @@ char	*get_next_line(int fd)
 	while (!board[fd] || (!in('\n', board[fd]) && nbr))
 	{
 		nbr = read(fd, buff, BUFFER_SIZE);
-		if (nbr == -1)
+		if (nbr == -1 || (!nbr && !board[fd]))
 		{
 			free(buff);
 			return (NULL);
