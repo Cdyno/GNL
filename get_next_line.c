@@ -6,7 +6,7 @@
 /*   By: olmohame <olmohame@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:15:29 by olmohame          #+#    #+#             */
-/*   Updated: 2023/11/22 15:58:33 by olmohame         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:28:28 by olmohame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	*get_next_line(int fd)
 	if (!buff)
 		return (clean_up(&board[fd], &board[fd]));
 	nbr = 1;
-	while (!board[fd] || (!in('\n', board[fd]) && nbr))
+	while (!in('\n', board[fd]) && nbr)
 	{
 		ft_memset(buff, 0, BUFFER_SIZE + 1);
 		nbr = read(fd, buff, BUFFER_SIZE);
