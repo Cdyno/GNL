@@ -6,13 +6,13 @@
 /*   By: olmohame <olmohame@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:15:29 by olmohame          #+#    #+#             */
-/*   Updated: 2023/11/22 09:11:59 by olmohame         ###   ########.fr       */
+/*   Updated: 2023/11/22 11:05:30 by olmohame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-/*
-static size_t	ft_strclen(const char *str, char cond)
+
+size_t	ft_strclen(const char *str, char cond)
 {
 	size_t	str_len;
 
@@ -20,7 +20,7 @@ static size_t	ft_strclen(const char *str, char cond)
 	while (str[str_len] != cond && str[str_len])
 		str_len++;
 	return (str_len);
-}*/
+}
 
 static char	*clean_up(char **str)
 {
@@ -52,10 +52,10 @@ static char	*extract_line(char **board)
 
 	cond = '\n';
 	line_len = ft_strclen(*board, cond) + 1;
-	line = ft_substr(*board, 0, line_len);
+	line = ft_strndup(*board, line_len);
 	if (ft_strclen(*board, '\0') > line_len)
 	{
-		tmp = ft_substr(*board, line_len, ft_strclen(*board, '\0'));
+		tmp = ft_strndup(*board + line_len, ft_strclen(*board, '\0'));
 		clean_up(board);
 		*board = tmp;
 	}
@@ -63,6 +63,8 @@ static char	*extract_line(char **board)
 	{
 		clean_up(board);
 	}
+	if (!line)
+		return (clean_up(board));
 	return (line);
 }
 
@@ -75,19 +77,16 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || fd > MAX_FD || BUFFER_SIZE <= 0)
 		return (NULL);
-	buff = ft_calloc(sizeof(char), (BUFFER_SIZE + 1));
+	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buff)
-		return (NULL);
+		return (clean_up(&board[fd]));
 	nbr = 1;
 	while (!board[fd] || (!in('\n', board[fd]) && nbr))
 	{
-		ft_bzero(buff, BUFFER_SIZE + 1);
+		ft_memset(buff, 0, BUFFER_SIZE + 1);
 		nbr = read(fd, buff, BUFFER_SIZE);
 		if (nbr == -1 || (!nbr && !board[fd]))
-		{
-			//clean_up(&buff);
 			return (clean_up(&buff), clean_up(&board[fd]));
-		}
 		tmp = ft_strjoin(board[fd], buff);
 		clean_up(&board[fd]);
 		board[fd] = tmp;
