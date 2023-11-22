@@ -6,7 +6,7 @@
 /*   By: olmohame <olmohame@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 07:16:04 by olmohame          #+#    #+#             */
-/*   Updated: 2023/11/21 10:45:37 by olmohame         ###   ########.fr       */
+/*   Updated: 2023/11/22 09:11:54 by olmohame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <limits.h>
+//# include <string.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 3
@@ -26,7 +28,7 @@
 # endif
 
 char	*get_next_line(int fd);
-size_t	ft_strlen(const char *str);
+size_t	ft_strclen(const char *str, char cond);
 char	*ft_strdup(const char *src);
 void	*ft_memset(void *ptr, int c, size_t len);
 void	ft_bzero(void *ptr, size_t n);
