@@ -6,11 +6,11 @@
 /*   By: olmohame <olmohame@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:02:47 by olmohame          #+#    #+#             */
-/*   Updated: 2023/11/22 14:02:50 by olmohame         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:04:57 by olmohame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	*ft_memset(void *ptr, int c, size_t len)
 {

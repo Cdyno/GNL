@@ -6,7 +6,7 @@
 /*   By: olmohame <olmohame@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:02:28 by olmohame          #+#    #+#             */
-/*   Updated: 2023/11/22 14:04:07 by olmohame         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:39:30 by olmohame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <limits.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
+#  define BUFFER_SIZE 1000
 # endif
 
 # ifndef MAX_FD

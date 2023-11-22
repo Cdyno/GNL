@@ -6,11 +6,11 @@
 /*   By: olmohame <olmohame@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:01:58 by olmohame          #+#    #+#             */
-/*   Updated: 2023/11/22 15:10:35 by olmohame         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:01:11 by olmohame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strclen(const char *str, char cond)
 {
