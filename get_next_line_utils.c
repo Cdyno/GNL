@@ -6,7 +6,7 @@
 /*   By: olmohame <olmohame@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 05:36:00 by olmohame          #+#    #+#             */
-/*   Updated: 2023/11/22 11:16:22 by olmohame         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:59:16 by olmohame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*ft_strndup(const char *src, size_t len)
 	return (replica);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*res;
 

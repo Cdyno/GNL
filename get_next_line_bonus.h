@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: olmohame <olmohame@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 11:16:38 by olmohame          #+#    #+#             */
-/*   Updated: 2023/11/22 11:18:34 by olmohame         ###   ########.fr       */
+/*   Created: 2023/11/22 14:02:28 by olmohame          #+#    #+#             */
+/*   Updated: 2023/11/22 14:04:07 by olmohame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@
 # endif
 
 char	*get_next_line(int fd);
+char	*clean_up(char **str, char **str2);
 size_t	ft_strclen(const char *str, char cond);
 void	*ft_memset(void *ptr, int c, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strndup(const char *src, size_t len);
 
 #endif

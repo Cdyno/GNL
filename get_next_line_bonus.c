@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: olmohame <olmohame@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 05:15:29 by olmohame          #+#    #+#             */
-/*   Updated: 2023/11/22 11:12:28 by olmohame         ###   ########.fr       */
+/*   Created: 2023/11/22 14:01:58 by olmohame          #+#    #+#             */
+/*   Updated: 2023/11/22 15:10:35 by olmohame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,17 @@ size_t	ft_strclen(const char *str, char cond)
 	return (str_len);
 }
 
-static char	*clean_up(char **str)
+char	*clean_up(char **str, char **str2)
 {
 	if (*str != NULL)
 	{
 		free(*str);
 		*str = NULL;
+	}
+	if (*str2 != NULL)
+	{
+		free(*str2);
+		*str2 = NULL;
 	}
 	return (NULL);
 }
@@ -56,15 +61,15 @@ static char	*extract_line(char **board)
 	if (ft_strclen(*board, '\0') > line_len)
 	{
 		tmp = ft_strndup(*board + line_len, ft_strclen(*board, '\0'));
-		clean_up(board);
+		clean_up(board, board);
 		*board = tmp;
 	}
 	else
 	{
-		clean_up(board);
+		clean_up(board, board);
 	}
 	if (!line)
-		return (clean_up(board));
+		return (clean_up(board, board));
 	return (line);
 }
 
@@ -79,18 +84,20 @@ char	*get_next_line(int fd)
 		return (NULL);
 	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buff)
-		return (clean_up(&board[fd]));
+		return (clean_up(&board[fd], &board[fd]));
 	nbr = 1;
 	while (!board[fd] || (!in('\n', board[fd]) && nbr))
 	{
 		ft_memset(buff, 0, BUFFER_SIZE + 1);
 		nbr = read(fd, buff, BUFFER_SIZE);
 		if (nbr == -1 || (!nbr && !board[fd]))
-			return (clean_up(&buff), clean_up(&board[fd]));
+			return (clean_up(&board[fd], &buff));
 		tmp = ft_strjoin(board[fd], buff);
-		clean_up(&board[fd]);
+		clean_up(&board[fd], &board[fd]);
+		if (!tmp)
+			return (clean_up(&tmp, &buff));
 		board[fd] = tmp;
 	}
-	clean_up(&buff);
+	clean_up(&buff, &buff);
 	return (extract_line(&board[fd]));
 }
