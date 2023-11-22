@@ -6,7 +6,7 @@
 /*   By: olmohame <olmohame@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:01:58 by olmohame          #+#    #+#             */
-/*   Updated: 2023/11/22 16:29:02 by olmohame         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:46:39 by olmohame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ char	*get_next_line(int fd)
 		if (nbr == -1 || (!nbr && !board[fd]))
 			return (clean_up(&board[fd], &buff));
 		tmp = ft_strjoin(board[fd], buff);
-		clean_up(&board[fd], &board[fd]);
 		if (!tmp)
-			return (clean_up(&tmp, &buff));
+			return (clean_up(&board[fd], &buff));
+		clean_up(&board[fd], &board[fd]);
 		board[fd] = tmp;
 	}
 	clean_up(&buff, &buff);
